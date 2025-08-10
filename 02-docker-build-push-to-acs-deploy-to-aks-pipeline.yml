@@ -14,7 +14,7 @@ variables:
   dockerRegistryServiceConnection: '6c287566-6516-48b5-b63f-5f8374e8e3fa'
   imageRepository: 'app1ngnixaks'
   containerRegistry: 'aksdevopsacr123.azurecr.io'
-  dockerfilePath: '**/Dockerfile'
+  dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile.txt'
   tag: '$(Build.BuildId)'
   imagePullSecret: 'aksdevopsacr12310196c3a-auth'
 
