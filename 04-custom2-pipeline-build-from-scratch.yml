@@ -10,6 +10,9 @@ trigger:
 
 # Variables
 variables:
+  imageRepository: 'custom2aksnginxapp1'
+  containerRegistry: '6c287566-6516-48b5-b63f-5f8374e8e3fa'
+  dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile.txt'
   tag: '$(Build.BuildId)'
 
 stages:
@@ -26,10 +29,10 @@ stages:
     # Task-1: Build Docker Image and push to Azure Container Registry ACR
     - task: Docker@2
       inputs:
-        containerRegistry: 'aksdevopsacr123'
-        repository: 'custom2aksnginxapp1'
         command: 'buildAndPush'
-        Dockerfile: '**/Dockerfile'
+        containerRegistry: $(containerRegistry)
+        repository: $(imageRepository)
+        Dockerfile: $(dockerfilePath)
         tags: |
           $(tag)
           $(Build.SourceVersion)
